@@ -1,0 +1,42 @@
+<Tracker>:
+    orientation: "vertical"
+    padding: 40
+    spacing: 20
+
+    Label:
+        text: "Paulaner Spezi Tracker"
+        font_size: 32
+        bold: True
+        size_hint_y: None
+        height: self.texture_size[1] + 20
+
+    Label:
+        text: "Heute getrunkene Spezis: [b]{}[/b}".format(root.today_count)
+        markup: True
+        font_size: 22
+
+    Button:
+        text: "Spezi trinken 🍹"
+        font_size: 22
+        size_hint_y: None
+        height: 60
+        on_release: root.add_spezi()
+
+    Label:
+        text: "Verlauf:"
+        font_size: 18
+        size_hint_y: None
+        height: self.texture_size[1] + 10
+
+    ScrollView:
+        size_hint_y: 1
+        GridLayout:
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+
+            Label:
+                text: "\n".join(root.get_log_display())
+                font_size: 16
+                size_hint_y: None
+                height: self.texture_size[1]

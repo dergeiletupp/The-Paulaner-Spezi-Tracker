@@ -1,3 +1,5 @@
+from kivy.lang import Builder
+Builder.load_file("tracker.kv")
 import kivy
 from kivy.app import App
 from kivy.properties import ListProperty, NumericProperty

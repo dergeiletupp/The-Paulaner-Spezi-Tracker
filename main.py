@@ -34,17 +34,33 @@ class Tracker(BoxLayout):
         self.logs.append(now)
         save_logs(self.logs)
         self.update_today_count()
+        self.update_log_display()
 
     def load_data(self):
         self.logs = load_logs()
         self.update_today_count()
+        self.update_log_display()
 
     def update_today_count(self):
         today = date.today().isoformat()
         self.today_count = sum(log.startswith(today) for log in self.logs)
 
-    def get_log_display(self):
-        return [log.replace("T", " ")[:19] for log in reversed(self.logs)]
+    def update_log_display(self):
+        grid = self.ids.get("log_grid")
+        if grid is not None:
+            grid.clear_widgets()
+            for log in reversed(self.logs):
+                label = Label(
+                    text=log.replace("T", " ")[:19],
+                    font_size=16,
+                    color=(.30, .22, .14, 1),
+                    size_hint_y=None,
+                    height=25,
+                    halign="left",
+                    valign="middle",
+                )
+                label.text_size = (grid.width - 10, None)
+                grid.add_widget(label)
 
 class SpeziApp(App):
     def build(self):

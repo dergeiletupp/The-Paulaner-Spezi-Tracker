@@ -1,42 +1,66 @@
 <Tracker>:
     orientation: "vertical"
-    padding: 40
-    spacing: 20
+    padding: [40, 40, 40, 40]
+    spacing: 25
+    canvas.before:
+        Color:
+            rgba: .98, .95, .89, 1  # Sanfter Beigeton
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
-    Label:
-        text: "Paulaner Spezi Tracker"
-        font_size: 32
-        bold: True
+    BoxLayout:
+        orientation: "horizontal"
         size_hint_y: None
-        height: self.texture_size[1] + 20
+        height: 60
+        spacing: 10
+
+        Image:
+            source: "spezi_icon.png" # Lege hier ein PNG oder verwende ein Emoji als Label
+            size_hint_x: None
+            width: 60
+
+        Label:
+            text: "Paulaner Spezi Tracker"
+            font_size: 32
+            bold: True
+            color: .45, .25, .12, 1
 
     Label:
-        text: "Heute getrunkene Spezis: [b]{}[/b}".format(root.today_count)
+        text: "Heute getrunkene Spezis: [b]{}[/b]".format(root.today_count)
         markup: True
-        font_size: 22
+        font_size: 24
+        color: .30, .22, .14, 1
 
     Button:
         text: "Spezi trinken 🍹"
         font_size: 22
         size_hint_y: None
         height: 60
+        background_normal: ""
+        background_color: .94, .56, .13, 1
+        color: 1,1,1,1
+        border: (20,20,20,20)
         on_release: root.add_spezi()
 
     Label:
         text: "Verlauf:"
         font_size: 18
+        color: .45, .25, .12, 1
         size_hint_y: None
         height: self.texture_size[1] + 10
 
     ScrollView:
         size_hint_y: 1
+        do_scroll_x: False
         GridLayout:
             cols: 1
             size_hint_y: None
             height: self.minimum_height
 
             Label:
-                text: "\n".join(root.get_log_display())
+                text: "\\n".join(root.get_log_display())
                 font_size: 16
+                color: .30, .22, .14, 1
                 size_hint_y: None
                 height: self.texture_size[1]

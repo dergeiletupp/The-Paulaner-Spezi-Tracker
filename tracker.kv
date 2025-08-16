@@ -15,13 +15,8 @@
         height: 60
         spacing: 10
 
-        Image:
-            source: "spezi_icon.png" # Lege hier ein PNG oder verwende ein Emoji als Label
-            size_hint_x: None
-            width: 60
-
         Label:
-            text: "Paulaner Spezi Tracker"
+            text: "🍹 Paulaner Spezi Tracker"
             font_size: 32
             bold: True
             color: .45, .25, .12, 1
@@ -54,13 +49,9 @@
         size_hint_y: 1
         do_scroll_x: False
         GridLayout:
+            id: log_grid
             cols: 1
             size_hint_y: None
             height: self.minimum_height
-
-            Label:
-                text: "\\n".join(root.get_log_display())
-                font_size: 16
-                color: .30, .22, .14, 1
-                size_hint_y: None
-                height: self.texture_size[1]
+            # Die Log-Einträge werden nun dynamisch erzeugt
+            # Das machen wir im Python-Code!

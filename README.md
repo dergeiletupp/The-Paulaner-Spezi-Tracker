@@ -26,4 +26,3 @@ Alle Logs werden in der Datei `data.json` gespeichert.
 
 ## Lizenz
 
-MIT
